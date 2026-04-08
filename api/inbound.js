@@ -16,8 +16,14 @@ module.exports = async (req, res) => {
       return res.status(200).json({ success: true, skipped: true });
     }
 
+    // Delay to allow Resend to finish processing the email body
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
     // Fetch the full email content — the webhook payload doesn't include the body
     const fullEmail = await resend.emails.get(email.email_id);
+    console.log("Full email keys:", Object.keys(fullEmail.data || {}));
+    console.log("Full email html:", fullEmail.data?.html?.substring(0, 200));
+    console.log("Full email text:", fullEmail.data?.text?.substring(0, 200));
     const from = email.from;
     const subject = email.subject;
     const html = fullEmail.data?.html;
