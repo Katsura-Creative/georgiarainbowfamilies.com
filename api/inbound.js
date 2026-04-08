@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
     const sendPayload = {
       from: "info@georgiarainbowfamilies.com",
       to: "ben@katsuracreative.com",
-      subject: `[GRF] ${subject || "(no subject)"}`,
+      subject: `[info@georgiarainbowfamilies.com] ${subject || "(no subject)"}`,
       replyTo: from,
     };
 
