@@ -8,7 +8,9 @@ module.exports = async (req, res) => {
   }
 
   try {
+    console.log("Inbound payload:", JSON.stringify(req.body, null, 2));
     const email = req.body.data || req.body;
+    console.log("Email keys:", Object.keys(email));
     const from = email.from;
     const subject = email.subject;
     const html = email.html || email.body;
