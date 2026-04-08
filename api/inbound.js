@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
     const text = fullEmail.data?.text;
 
     const sendPayload = {
-      from: "info@georgiarainbowfamilies.com",
+      from: "GRF Inbox <info@georgiarainbowfamilies.com>",
       to: "ben@katsuracreative.com",
       subject: `[info@georgiarainbowfamilies.com] ${subject || "(no subject)"}`,
       replyTo: from,
