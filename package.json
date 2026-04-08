@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Katsura-Creative/georgiarainbowfamilies.com#readme",
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "resend": "^6.10.0"
   }
 }
