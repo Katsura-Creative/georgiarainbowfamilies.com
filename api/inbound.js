@@ -8,9 +8,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    console.log("Inbound payload:", JSON.stringify(req.body, null, 2));
     const email = req.body.data || req.body;
-    console.log("Email keys:", Object.keys(email));
     const to = email.to;
     const toAddress = Array.isArray(to) ? to.join(', ') : (to || '');
 
@@ -18,10 +16,12 @@ module.exports = async (req, res) => {
       return res.status(200).json({ success: true, skipped: true });
     }
 
+    // Fetch the full email content — the webhook payload doesn't include the body
+    const fullEmail = await resend.emails.get(email.email_id);
     const from = email.from;
     const subject = email.subject;
-    const html = email.html || email.body;
-    const text = email.text;
+    const html = fullEmail.data?.html;
+    const text = fullEmail.data?.text;
 
     const sendPayload = {
       from: "info@georgiarainbowfamilies.com",
