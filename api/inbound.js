@@ -8,17 +8,24 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { from, subject, html, text, attachments } = req.body;
+    const email = req.body.data || req.body;
+    const from = email.from;
+    const subject = email.subject;
+    const html = email.html || email.body;
+    const text = email.text;
 
-    await resend.emails.send({
+    const sendPayload = {
       from: "info@georgiarainbowfamilies.com",
       to: "ben@katsuracreative.com",
       subject: `[GRF] ${subject || "(no subject)"}`,
       replyTo: from,
-      html: html || undefined,
-      text: text || undefined,
-      attachments: attachments || undefined,
-    });
+    };
+
+    if (html) sendPayload.html = html;
+    else if (text) sendPayload.text = text;
+    else sendPayload.text = "(empty message)";
+
+    await resend.emails.send(sendPayload);
 
     return res.status(200).json({ success: true });
   } catch (error) {
