@@ -1,0 +1,24 @@
+{
+  "name": "georgiarainbowfamilies.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Katsura-Creative/georgiarainbowfamilies.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Katsura-Creative/georgiarainbowfamilies.com/issues"
+  },
+  "homepage": "https://github.com/Katsura-Creative/georgiarainbowfamilies.com#readme",
+  "dependencies": {
+    "resend": "^6.10.0"
+  }
+}
